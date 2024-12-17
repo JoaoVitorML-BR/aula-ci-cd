@@ -26,3 +26,7 @@ jobs:
       # Install dependencies
         - name: Install dependencies
           run: yarn 
+
+      # Run testes 
+        - name: Running Tests
+          run: yarn test
