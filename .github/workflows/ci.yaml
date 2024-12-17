@@ -12,12 +12,16 @@ jobs:
   build:
       name: 'Build and Push'
       runs-on: ubuntu-latest
-
+      # Down the code from the repository
       steps:
         - name: Checkout source code
           uses: actions/checkout@v4
-
+      # Set NodeJS Version
         - name: Set up NodeJS
           uses: actions/setup-node@v2
           with:
             node-version: '22'
+
+      # Install dependencies
+        - name: Install dependencies
+          run: yarn install 
