@@ -12,15 +12,21 @@ jobs:
   build:
       name: 'Build and Push'
       runs-on: ubuntu-latest
+
+      strategy:
+          matrix:
+            node-version: [18, 20, 22]
+      
       # Down the code from the repository
       steps:
         - name: Checkout source code
           uses: actions/checkout@v4
+          
       # Set NodeJS Version
         - name: Set up NodeJS
           uses: actions/setup-node@v2
           with:
-            node-version: '22'
+            node-version: ${{ matrix.node-version }}
             cache: 'yarn'
 
       # Install dependencies
