@@ -11,17 +11,18 @@ on:
 jobs:
   build:
       name: 'Build and Push'
-      runs-on: ubuntu-latest
+      runs-on: ${{ matrix.os }}
 
       strategy:
           matrix:
             node-version: [18, 20, 22]
+            os: [ubuntu-latest, windows-latest, macos-latest]
       
       # Down the code from the repository
       steps:
         - name: Checkout source code
           uses: actions/checkout@v4
-          
+
       # Set NodeJS Version
         - name: Set up NodeJS
           uses: actions/setup-node@v2
